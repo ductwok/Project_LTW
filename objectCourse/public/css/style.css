@@ -1,0 +1,768 @@
+:root{
+    --grad:linear-gradient(90deg, #f1c40f, #f39c12);
+    --green: #27ae60;
+    --dark: #219150;
+    --black: #444;
+    --light: #666;
+    --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    --border-hover: 0.1rem solid var(--black);
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+* {
+    font-family: sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    border:none; outline: none;
+    text-decoration: none;
+   
+}
+*::selection{
+    background:#f39c12;
+    color:#fff;
+}
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+    width: 1.2rem;
+}
+html::-webkit-scrollbar-track {
+    background: #333;
+}
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(#f1c40f, #f39c12);
+}
+/* header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 5;
+    padding: 1.5rem 7%;
+    background: var(--grad);
+    box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .3);
+} */
+span {
+    color: #f39c12;
+}
+/*
+Global button
+*/
+.btn {
+    padding: .8rem 3rem;
+    background: var(--grad);
+    color: white;
+    font-size: 2rem;
+    border-radius: 5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .3);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -1rem; left: -100%;
+    background: #fff9;
+    height: 150%;
+    width: 20%;
+    transform: rotate(25deg);
+    z-index: -1;
+}
+.btn:hover::before {
+    transition: 0.5s linear;
+    left: 120%;
+}
+
+
+
+
+
+/*
+    header
+*/
+.header .header1 {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 9%;
+    align-items: center;
+}
+.header .header1 .logo {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--black);
+    font-family: cursive;
+}
+.header .header1 .logo .fa-book {
+    color: orange;
+}
+.header .header1 .search-form {
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    border: var(--border);
+    overflow: hidden;
+    background: #fff;
+    border-radius: 0.5rem;
+}
+.header .header1 .search-form input {
+    font-size: 1.6rem;
+    padding: 0 1.2rem;
+    height: 100%;
+    width: 100%;
+    text-transform: none;
+    color: var(--black);
+}
+.header .header1 .search-form .search {
+    font-size: 2.5rem;
+    padding-right: 1.5rem;
+    color: var(--black);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.header .header1 .search-form .search:hover {
+    color: orange;
+}
+.header .header1 .icons .search,
+.header .header1 .icons .shopping,
+.header .header1 .icons .user {
+    font-size: 2.5rem;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.header .header1 .icons .search:hover,
+.header .header1 .icons .shopping:hover,
+.header .header1 .icons .user:hover {
+    color: orange;
+}
+#search-btn {
+    display: none;
+}
+.header .header2 {
+    background: var(--grad);
+}
+.header .header2.active {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+}
+.header .header2 .navbar {
+    text-align: center;
+}
+.header .header2 .navbar a {
+    color: #fff;
+    display: inline-block;
+    padding: 1.2rem;
+    font-size: 1.7rem;
+    transition: 0.2s linear;
+}
+.header .header2 .navbar a:hover {
+    background: #CF8D00;
+}
+/*
+login previous version
+*/
+/* .login {
+    height: 100%; width: 100%;
+    position: fixed;
+    top: -120%; left: 0;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+.login.popup {
+    top: 0;
+}
+.login form {
+    width: 35rem;
+    background: white;
+    padding: 1rem 3rem;
+    margin: 0 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 .1rem .3rem #333;
+    position: relative;
+}
+.login form h3 {
+    font-size: 3rem;
+    color: #f39c12;
+    padding:  1rem 0;
+}
+.login form .box {
+    width: 100%;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    border-bottom: .2rem solid #666;
+    font-size: 1.6rem;
+    color: #333;
+    text-transform: none;
+}
+.login form .box::placeholder {
+    text-transform: capitalize;
+}
+.login form .box:focus {
+    border-color: #f39c12;
+}
+.login form .box:nth-child(3) {
+    margin-bottom: 5rem;
+}
+.login form p {
+    font-size: 1.5rem;
+    color: #666;
+    padding: .5rem 0;
+}
+.login form p a {
+    color: #f39c12;
+}
+.login form .btn {
+    width: 100%;
+    margin: 2rem 0;
+}
+.login form .btn:hover {
+    background: #444;
+}
+.login form .fa-xmark {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #999;
+}
+.login form .fa-xmark:hover {
+    color: #444;
+} */
+
+
+
+/*
+Login form new version
+*/
+.login-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 0; right: -100%;
+    z-index: 1000000000;
+    /* height: 100%; width: 100%; */
+    transition: 0.5s;
+}
+.login-form.popup {
+    right: 1rem;
+    top: 7rem;
+    
+}
+.login-form form {
+    background: #fff;
+    border: var(--border);
+    width: 30rem;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5rem;
+    /* margin: 2rem; */
+}
+.login-form form h3 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: orange;
+    text-align: center;
+}
+.login-form form span {
+    display: block;
+    font-size: 1.7rem;
+    padding-top: 1rem;
+    font-weight: bolder;
+    color: #666;
+}
+.login-form form .box {
+    margin: 0.7rem 0;
+    font-size: 1.6rem;
+    border: var(--border);
+    border-radius: 0.5rem;
+    padding: 1rem 1.2rem;
+    color: var(--black);
+    text-transform: none;
+    width: 100%;
+}
+.login-form form .box::placeholder {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #C1C1C1;
+}
+.login-form form .box:focus {
+    border-color: orange;
+}
+.login-form form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+.login-form form .checkbox label {
+    font-size: 1.5rem;
+    color: var(--light);
+    cursor: pointer;
+}
+.login-form form .btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 0.5rem;
+    background: orange;
+    margin-bottom: 1rem;
+    box-shadow: none;
+}
+.login-form form .btn:hover {
+    background: #CF8D00;
+}
+.login-form form p {
+    padding-top: 1rem;
+    color: var(--light);
+    font-size: 1.5rem;
+}
+.login-form form p a {
+    color: orange;
+    text-decoration: underline;
+}
+.login-form #close-btn {
+    position: absolute;
+    top: 1rem; right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.login-form #close-btn:hover {
+    color: orange;
+}
+
+
+
+
+
+/*
+home section
+*/
+section {
+    min-height: 100vh;
+    padding: 1rem 7%;
+    padding-top: 6rem;
+}
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    background-image: url(../images/home-bg.jpg) ;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    text-align: center;
+}
+.home h1 {
+    font-size: 6rem;
+    color: #666;
+}
+.home p {
+    font-size: 1.9rem;
+    color: #999;
+    padding: 1rem 0;
+    width: 60rem;
+}
+.home .shape {
+    position: absolute;
+    bottom: 0rem; left: 0;
+    width: 100%;
+    height: 15rem;
+    background-image: url(../images/shape.png);
+    block-size: 100rem 15rem;
+    filter: drop-shadow(0 -0.1rem 0.1rem rgba(0, 0, 0, 0.2));
+    animation: animate 10s linear infinite;
+}
+@keyframes animate {
+    0% {
+        background-position-x: 0rem;
+    }
+    100% {
+        background-position-x: 100rem;
+    }
+}
+
+
+
+
+
+/*
+about section
+*/
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* background: #CFF0FF;
+    background-image: url('images/triangle.jpg');
+    background-size: cover;
+    background-blend-mode: overlay; */
+}
+.about .image {
+    flex:1 1 45rem;
+}
+.about .image img {
+    height: 65vh;
+    width: 100%;
+}
+.about .content {
+    flex: 1 1 40rem;
+}
+.about .content h3 {
+    font-size: 5rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+.about .content span {
+    color: #f39c12;
+}
+.about .content p {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+
+/*
+course
+*/
+.course .head {
+    font-size: 5rem;
+    color: #666;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.course .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.course .box-container .box {
+    width: 35rem;
+    border: 1.5rem solid white;
+    position: relative;
+    margin: 1.5rem;
+    box-shadow: 0.2rem 0.2rem 0.3rem 0.3rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.8rem;
+    margin-bottom: 5rem;
+    transition: 0.5s;
+}
+.course .box-container .box:hover {
+    transform: translateY(-1rem);
+}
+.course .box-container .box img {
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+.course .box-container .box .price {
+    position: absolute;
+    top: 17rem;
+    right: 1rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5.5rem;
+    text-align: center;
+    background: #FF8A00;
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+}
+.course .box-container .box .content {
+    padding: 1rem;
+}
+.course .box-container .box .content .stars {
+    color: #f39c12;
+    font-size: 1.7rem;
+    padding: 1rem 0.1rem;
+}
+.course .box-container .box .content .title {
+    color: #444;
+    font-size: 2.1rem;
+}
+.course .box-container .box .content .title:hover {
+    text-decoration: underline;
+    color: #f39c12;
+}
+.course .box-container .box .content p {
+    font-size: 1.3rem;
+    color: #666;
+    padding: 1rem 0;
+}
+.course .box-container .box .content .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 0.1rem solid lightgrey;
+}
+.course .box-container .box .content .info h3 {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: #666;
+}
+.course .box-container .box .content .info h3 .icon {
+    color: #f39c12;
+}
+
+
+
+
+
+/*
+teacher section
+*/
+.teacher {
+    text-align: center;
+    background-image: url(../images/teachers.jfif) ;
+    background-size: cover;
+    background-position: bottom;
+}
+.teacher h1 {
+    font-size: 4.5rem;
+    color: #666;
+}
+.teacher p {
+    font-size: 1.8rem;
+    color: #999;
+    width: 60rem;
+    margin: 1.5rem auto;
+}
+
+
+
+
+
+/*
+contact section
+*/
+.contact {
+    background: #FBD44B;
+    background-image: url('images/html-course.png');
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+.contact h1 {
+    color: #fff;
+    font-size: 5rem;
+    text-align: center;
+}
+.contact .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.contact .row form {
+    flex: 1 1 50rem;
+    background: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    align-items: flex-start;
+    border-radius: 0.8rem;
+}
+.contact .row form .box {
+    height: 5rem;
+    width: 49%;
+    border: 0.2rem solid #D6D6D6;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    font-size: 1.7rem;
+    color: black;
+    background: none;
+    text-transform: none;
+    border-radius: 0.8rem;
+}
+.contact .row form .box:focus {
+    border-color: #f39c12;
+    transition: 0.35s;
+}
+.contact .row form .box::placeholder{
+    text-transform: capitalize;
+    color: rgb(184, 184, 184);
+    font-size: 1.3rem;
+    font-style: italic;
+}
+.contact .row form .address {
+    height: 10rem;
+    padding: 1rem;
+    resize: none;
+    width: 100%;
+}
+.contact .row form .btn {
+    box-shadow: none;
+    background: none;
+    color: black;
+    font-weight: bold;
+    border: 0.2rem solid #999;
+    transition: 0.2s;
+}
+.contact .row form .btn:hover {
+    border: 0.2rem solid orange;
+    background: orange;
+    color: white;
+}
+.contact .ima {
+    width: 50rem;
+    height: 50rem;
+}
+.contact .image img {
+    height: 80vh;
+    margin-top: 2rem;
+}
+
+
+
+
+
+/*
+footer section
+*/
+.footer {
+    background: #333;
+}
+.footer .box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.footer .box-container .box {
+    margin: 1.5rem;
+    text-align: center;
+    flex: 1 1 25rem;
+}
+.footer .box-container .box h3 {
+    font-size: 2.5rem;
+    color: white;
+    padding: 1rem 0;
+}
+.footer .box-container .box p {
+    font-size: 1.7rem;
+    color: #eee;
+    padding: 0.7rem 0;
+}
+.footer .box-container .box .icon {
+    padding-right: 0.5rem;
+    color: #f39c12;
+}
+.footer .box-container .box a {
+    font-size: 1.8rem;
+    display: block;
+    padding: 0.5rem 0;
+    color: #999;
+}
+.footer .box-container .box a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+.footer .credit {
+    padding: 2rem 1rem;
+    font-size: 2rem;
+    color: white;
+    background: #111;
+    text-align: center;
+    font-weight: normal;
+}
+.footer .credit a {
+    color: #f39c12;
+    text-decoration: underline 1px solid orange;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+responsive website
+*/
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+    header #menu{
+        display: block;
+    }
+    header .navbar {
+        position: fixed;
+        top: -120%; left: 0;
+        width: 100%;
+        background: dimgrey;
+        transition: 0.5s;
+    }
+    header .navbar ul {
+        flex-flow: column;
+        padding: 2rem 0;
+    }
+    header .navbar ul li {
+        margin: 1.5rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    header .navbar ul li a {
+        font-size: 2.5rem;
+        display: block;
+    }
+    header .navbar ul li a:hover{
+        color: #f39c12;
+    }
+    .fa-xmark {
+        transform: rotate(90deg);
+    }
+    header .navbar.nav-toggle {
+        top: 6.4rem;
+    }
+    .home h1 {
+        font-size: 4rem;
+    }
+    .home p {
+        width: auto;
+    }
+    .teacher p {
+        width: auto;
+    }
+    .contact .image img {
+        display: none;
+    }
+}
+@media (max-width: 500px) {
+    html {
+        font-size: 50%;
+    }
+    .contact .row form .box {
+        width: 100%;
+    }
+}
