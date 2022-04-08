@@ -25,6 +25,10 @@
             <textarea id="inputDescription" class="form-control"  name="desc" rows="4">{{ $item_course->desc }}</textarea>
           </div>
           <div class="form-group">
+            <label for="inputName">Giá khóa học</label>
+            <input type="number" id="inputPrice" class="form-control" name="price" value="{{$item_course->price}}">
+          </div>
+          <div class="form-group">
             <label for="inputimage">Hình ảnh</label>
             <input type="file" id="inputimage" class="form-control" name="image">
           </div>

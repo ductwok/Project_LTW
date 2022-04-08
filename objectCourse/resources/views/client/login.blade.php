@@ -25,16 +25,16 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div> --}}
             <input type="text" placeholder="Tên" class="reg_name">     
-       
+            <div class="message_name"></div>
             <input type="email" placeholder="Email" class="reg_email">    
-    
-            <input type="text" placeholder="Số điện thoại" class="reg_phone">
-
+            <div class="message_email"></div>
+            <input type="number" placeholder="Số điện thoại" class="reg_phone">
+            <div class="message_phone"></div>
             <input type="text" placeholder="Địa chỉ" class="reg_address">
-  
+            <div class="message_address"></div>
             <input type="password" placeholder="Mật khẩu" class="reg_password">
-     
             <input type="password" placeholder="Nhập lại mật khẩu" class="reg_password2">
+            <div class="message_password"></div>
 
             <div class="message_pass"></div>
             <input type="hidden" class="reg_image" value="https://pbs.twimg.com/profile_images/661849802808926209/iTJBkswa_400x400.jpg">
@@ -106,25 +106,51 @@
         var image = $('.reg_image').val();
         var password = $('.reg_password').val();
         var password2 = $('.reg_password2').val();
-        $.ajax({
-          url:url,
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          method:"POST",
-          data:{
-            name:name,
-            phone:phone,
-            email:email,
-            address:address,
-            image:image,
-            password:password,
-            password2:password2
-          },
-          success:function(data){
-            $('.message_pass').html(data);
-          }
-        })
+    
+
+        if( $('.reg_name').val() == "" ) {
+            $('.message_name').html('vui lòng nhập tên');
+            $('.reg_name').focus() ;
+         }else if($('.reg_email').val() == ""){
+          $('.message_name').html('');
+          $('.message_email').html('vui lòng nhập email');
+            $('.reg_email').focus() ;
+         }else if($('.reg_phone').val() == ""){
+          $('.message_email').html('');
+          $('.message_phone').html('vui lòng nhập phone');
+            $('.reg_phone').focus() ;
+         }else if($('.reg_address').val() == ""){
+          $('.message_phone').html('');
+          $('.message_address').html('vui lòng nhập địa chỉ');
+            $('.reg_address').focus() ;
+         }else if($('.reg_password').val() == ""){
+          $('.message_address').html('');
+          $('.message_password').html('password không được để trống');
+            $('.reg_password').focus() ;
+         }else{
+           $.ajax({
+             url:url,
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+             method:"POST",
+             data:{
+               name:name,
+               phone:phone,
+               email:email,
+               address:address,
+               image:image,
+               password:password,
+               password2:password2
+             },
+             success:function(data){
+               if(data == 1){
+                 location.reload()
+               }
+             }
+           })
+
+         }
         
       }
       $(function(){

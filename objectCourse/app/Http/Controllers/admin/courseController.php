@@ -35,9 +35,11 @@ class courseController extends Controller
         $arr_course = array(
             'name' => $request->name,
             'desc' => $request->desc,
+            'price' => $request->price,
             'status' => $request->status,
             'category_id' => $request->category_id,
-            'user_id' => $request->user_id
+            'user_id' => $request->user_id,
+            'image_path' => ''
         );
         
         if($request->hasFile('image')){
@@ -59,6 +61,7 @@ class courseController extends Controller
             'name' => $request->name,
             'desc' => $request->desc,
             'status' => $request->status,
+            'price' => $request->price,
             'category_id' => $request->category_id,
             'user_id' => $request->user_id
         );

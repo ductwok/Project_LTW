@@ -18,7 +18,7 @@ class homeController extends Controller
     public function index(){
         // $course_footer = $this->course->take(3)->get();
         $course_footer = $this->course->take(3)->get();
-        $data_course = $this->course->paginate(6);
+        $data_course = $this->course->where('status',1)->paginate(6);
         return view('client.home',compact('data_course','course_footer'));
     }
     public function add_course(Request $request){
@@ -30,7 +30,7 @@ class homeController extends Controller
     }
     public function view_product_detail(Request $request){
         $course = $this->course->find($request->id);
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.view_course_detail',compact('course','course_footer'));
     }
     
@@ -38,7 +38,7 @@ class homeController extends Controller
         if(auth()->check()){
             $user = auth()->user();
             $data_course = $user->my_course;
-            $course_footer = $this->course->take(3)->get();
+            $course_footer = $this->course->where('status',1)->take(3)->get();
             return view('client.my-course',compact('course_footer','data_course'));
         }else{
             return redirect()->route('logins.form');
@@ -51,7 +51,7 @@ class homeController extends Controller
     }
     public function course_single($id){
         if (auth()->check()) {
-            $course_footer = $this->course->take(3)->get();
+            $course_footer = $this->course->where('status',1)->take(3)->get();
             $item_course = $this->course->find($id);
             return view('client.course-3',compact('item_course','course_footer'));
         }else{
@@ -60,20 +60,20 @@ class homeController extends Controller
         
     }
     public function about(){
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.about',compact('course_footer'));
     }
     public function contact(){
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.contact',compact('course_footer'));
     }
     public function profile(Request $request){
         $user = User::find($request->id);
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.profile',compact('course_footer','user'));
     }
     public function edit_profile(){
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.edit_profile',compact('course_footer'));
     }
     
@@ -98,7 +98,7 @@ class homeController extends Controller
         }
         $user = User::find($request->user_id);
         $course = $this->course->find($request->course_id);
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.payment',compact('course_footer','user','course'));
     }
     public function payment_handle(Request $request){
@@ -110,7 +110,7 @@ class homeController extends Controller
     }
     public function payment_history(Request $request){
         $user = User::find($request->user_id);
-        $course_footer = $this->course->take(3)->get();
+        $course_footer = $this->course->where('status',1)->take(3)->get();
         return view('client.payment_history',compact('course_footer'));
     }
 

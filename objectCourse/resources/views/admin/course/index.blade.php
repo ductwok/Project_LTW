@@ -35,6 +35,9 @@
                             <th class="col-2">
                                 Mô Tả
                             </th>
+                            <th class="col-2">
+                                Giá
+                            </th>
                             <th class="col-1">
                                 Hình ảnh
                             </th>
@@ -65,6 +68,10 @@
                                     <td>
 
                                         {{ $item_course->desc }}
+                                    </td>
+                                    <td>
+
+                                        {{ $item_course->price }}
                                     </td>
                                     <td>
                                         <img src="{{ $item_course->image_path }}" style="height:50px">
